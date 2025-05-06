@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="page-header mb-4 animate__animated animate__fadeInDown">
+        <h1 class="h2"><i class="fa fa-tachometer-alt me-2"></i> Dashboard Overview</h1>
+        <p class="text-muted">A quick summary of your inventory system</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Products Card -->
+        <div class="card animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="card-header bg-primary text-white">
+                <i class="fa fa-box me-2"></i> Products
+            </div>
+            <div class="card-body text-center">
+                <p class="display-4 text-primary fw-bold">{{ product_count }}</p>
+                <p class="mb-0 text-muted">Total products in inventory</p>
+                <a href="{{ url_for('products') }}" class="btn btn-outline-primary btn-sm mt-3">View Details</a>
+            </div>
+        </div>
+
+        <!-- Locations Card -->
+        <div class="card animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="card-header bg-success text-white">
+                <i class="fa fa-map-marker-alt me-2"></i> Locations
+            </div>
+            <div class="card-body text-center">
+                <p class="display-4 text-success fw-bold">{{ location_count }}</p>
+                <p class="mb-0 text-muted">Warehouse locations</p>
+                <a href="{{ url_for('locations') }}" class="btn btn-outline-success btn-sm mt-3">View Details</a>
+            </div>
+        </div>
+
+        <!-- Movements Card -->
+        <div class="card animate__animated animate__fadeInUp animate__delay-3s">
+            <div class="card-header bg-info text-white">
+                <i class="fa fa-exchange-alt me-2"></i> Movements
+            </div>
+            <div class="card-body text-center">
+                <p class="display-4 text-info fw-bold">{{ total_movements }}</p>
+                <p class="mb-0 text-muted">Total recorded transactions</p>
+                <a href="{{ url_for('movements') }}" class="btn btn-outline-info btn-sm mt-3">View Details</a>
+            </div>
+        </div>
+
+        <!-- Analytics Card -->
+        <div class="card animate__animated animate__fadeInUp animate__delay-4s">
+            <div class="card-header bg-warning text-dark">
+                <i class="fa fa-chart-bar me-2"></i> Analytics
+            </div>
+            <div class="card-body text-center">
+                <p class="display-4 text-warning fw-bold">{{ analytics_score }}</p>
+                <p class="mb-0 text-muted">System health rating</p>
+                <a href="{{ url_for('report') }}" class="btn btn-outline-warning btn-sm mt-3">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

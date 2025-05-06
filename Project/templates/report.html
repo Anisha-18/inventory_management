@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4><i class="fas fa-chart-bar me-2"></i> Stock Report</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="reportTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Product</th>
+                                {% for location in locations %}
+                                    <th>{{ location.name }}</th>
+                                {% endfor %}
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    {% for location in locations %}
+                                        <td class="{% if stock_data.get(location.location_id, {}).get(product.product_id, 0) <= 5 %}table-warning{% endif %}">
+                                            {{ stock_data.get(location.location_id, {}).get(product.product_id, 0) }}
+                                        </td>
+                                    {% endfor %}
+                                    <td class="fw-bold">{{ product.quantity }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+    // Initialize DataTable with export buttons
+    $('#reportTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+});
+</script>
+{% endblock %}
