@@ -1,11 +1,11 @@
 # inventory_management
-# 📦 Inventory Management System
+# Inventory Management System
 
 A simple **Flask-based Inventory Management System** to track products, their movements (buy, sell, transfer), and generate a **product-location-wise stock report**.
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Add and manage Products
 - Add and manage Locations
@@ -16,7 +16,7 @@ A simple **Flask-based Inventory Management System** to track products, their mo
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Python 3
 - Flask
@@ -27,7 +27,7 @@ A simple **Flask-based Inventory Management System** to track products, their mo
 
 ---
 
-## 🧾 Installation
+## Installation
 
 1. **Clone the repository**
    ```bash
